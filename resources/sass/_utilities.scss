@@ -1,0 +1,311 @@
+@import 'config';
+
+.bg-primary{
+    @include setTextBackground($primary-color);
+}
+
+.bg-secondary{
+    @include setTextBackground($secondary-color);
+}
+
+.bg-light{
+    @include setTextBackground($light-color);
+}
+
+.bg-white{
+    @include setTextBackground(white);
+}
+
+.bg-dark{
+    @include setTextBackground($dark-color);
+}
+
+hr{
+    color: $secondary-color;
+}
+
+p{
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+}
+
+li,input, textarea{
+    outline: none;
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.container-full{
+    width: 100%;
+}
+
+img{
+    width: 500px;
+}
+
+//margin and padding functionality 
+$listNum: (0,1,2,3,4,5);
+@each $num in $listNum{
+    .p-#{$num}{
+        padding: #{$num * 5}px;
+    }
+
+    .pl-#{$num}{
+        padding-left: #{$num * 5}px;
+    }
+
+    .pr-#{$num}{
+        padding-right: #{$num * 5}px;
+    }
+
+    .pt-#{$num}{
+        padding-top: #{$num * 5}px;
+    }
+
+    .pb-#{$num}{
+        padding-bottom: #{$num * 5}px;
+    }
+
+    .m-#{$num}{
+        margin: #{$num * 5}px;
+    }
+
+    .ml-#{$num}{
+        margin-left: #{$num * 5}px;
+    }
+
+    .mr-#{$num}{
+        margin-right: #{$num * 5}px;
+    }
+
+    .mt-#{$num}{
+        margin-top: #{$num * 5}px;
+    }
+
+    .mb-#{$num}{
+        margin-bottom: #{$num * 5}px!important;
+    }
+}
+
+.m-auto{
+    margin: auto!important;
+}
+
+
+
+.p-auto{
+    padding: auto;
+}
+
+//buttons
+%btn{
+    display: inline-block;
+    margin: 5px;
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover{
+        transform: translateY(3px);
+        border: 2px solid;
+        border-color: inherit;
+    }
+}
+
+.button{
+    @extend %btn;
+}
+
+.button-primary{
+    @extend %btn;
+    @include setTextBackground($primary-color);
+}
+
+.button-secondary{
+    @extend %btn;
+    @include setTextBackground($secondary-color);
+}
+//button end
+
+//display flex functionality
+%flex{
+    display: flex;
+    // align-items: center;
+}
+.flex{
+    @extend %flex;
+}
+
+.flex-around{
+    @extend %flex;
+    justify-content: space-around;
+}
+
+.flex-between{
+    @extend %flex;
+    justify-content: space-between;
+}
+
+.flex-center{
+    @extend %flex;
+    justify-content: center;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.align-items-left{
+    align-items: left;
+}
+
+.align-items-right{
+    align-items: right;
+}
+
+.shadow{
+    box-shadow: 1px 2px 6px $dark-color;
+}
+
+.shadow-lg{
+    box-shadow: 3px 3px 20px $dark-color;
+}
+
+.shadow-sm{
+    box-shadow: .4px 1px 3px $dark-color;
+}
+
+.rounded{
+    border-radius: 10px;
+}
+
+.d-none{
+    display: none;
+}
+
+.title{
+    font-size: 30px;
+    text-align: center;
+    @include setTextBackground($secondary-color);
+    padding: 10px;
+}
+.title-sm{
+    font-size: 23px;
+    text-align: center;
+    @include setTextBackground($primary-color);
+    padding: 10px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.center{
+    text-align: center;
+}
+
+.message{
+    // padding: 15px;
+    position: fixed;
+    top: 20px;
+    right: 0;
+    font-weight: 400;
+    width: 400px;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: "Nunito", sans-serif;
+    border-radius: 10px;
+    @include alert($light-color);
+    display: flex;
+    justify-content: space-between;
+    animation: 1s message forwards;
+    margin-right: 2px;
+     
+    div{
+        
+        padding: 0px 15px;
+        display: flex;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        // height: 100%;
+
+        svg{
+            align-self: center;
+            width: 30px;
+            height: 30px;
+        }
+    }
+    
+    span{
+        padding: 14px;
+        align-self: center;
+    }
+
+    a.close{
+        padding: 0px 7px!important;
+        font-size: 30px!important;
+        opacity: .7!important;
+        align-self: center!important;
+
+        &:hover{
+            opacity: 1!important;
+        }
+    }
+
+    @keyframes message {
+        0%{right: 0px;}
+        20%{right: 20px;}
+        40%{right: 0px;}
+        60%{right: 20px;}
+        80%{right: 0px;}
+        100%{right: 0px;}
+    }
+}
+
+.message-success{
+    @include alert($green);
+}
+
+.message-danger{
+    @include alert($red);
+}
+
+.message-warning{
+    @include alert($orange);
+}
+
+
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: $dark-color;
+
+    .modal-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        .modal-content{
+            width: 30%;
+            transform: translateY(-50px);
+        }
+    }
+}
+
+
+.fade{
+    transition: .8s all linear;
+}
