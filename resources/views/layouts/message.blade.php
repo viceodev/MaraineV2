@@ -1,12 +1,26 @@
-@if(count($error->all()) > 0)
+@if(count($errors) > 0)
 
-@foreach ($error as $error)
+@foreach ($errors->all() as $error)
     <div class="message message-danger">
         {{$error}}
     </div>
 @endforeach
 
-@endforeach
 
+@elseif(session('error'))
+    <div class="message message-danger">
+        {{session('error')}}
+    </div>
 
-@if(session('error'))
+@elseif(session('warning'))
+
+    <div class="message message-warning">
+        {{session('warning')}}
+    </div>
+
+@elseif(session('success'))
+
+    <div class="message message-success">
+        {{session('success')}}
+    </div>
+@endif

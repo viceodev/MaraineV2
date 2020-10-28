@@ -3,10 +3,13 @@ $secondary_color: orange;
 $light-color: #f8fafc;
 $dark-color: rgba(0, 0, 0, 0.911);
 $shadow: 1px 2px 6px rgba(0, 0, 0, 0.911);
+$shadow-sm: .4px 1px 3px $dark-color;
 $green: #38c172;
 $red: #e3342f;
 $orange: #f6993f;
 $yellow: #ffed4a;
+$opaque: rgba(0,0,100, 0.1);
+$fade:   .5s all;
 
 
 // Set text color depending on the lightness of a background

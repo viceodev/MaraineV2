@@ -4,7 +4,7 @@
 @section('auth-form')
   
             <form action="{{route('register')}}" method="POST">
-          
+                @csrf
               <div class="process d-none">
                   <span>0%</span>
                   <div class="process-contain">
@@ -15,7 +15,7 @@
 
           <section class="step">  
               <section class="step-process"></section>     
-              @csrf
+              
 
                 <div class="step-child step-1">
 
@@ -24,7 +24,7 @@
                 <span>
                     <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg></i>
 
-                    <input type="text" name="name" placeholder="Full Name" value="{{old('Name')}}">
+                    <input type="text" name="name" placeholder="Full Name" value="{{old('name')}}">
                 </span><br>
 
                 {{-- username --}}
@@ -58,7 +58,45 @@
                 <span>
                     <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg></i>
 
-                    <input type="text" name="" placeholder="Name" value="{{old('Name')}}">
+                    <select id="states" name="state">
+                    <option value="">State</option>
+                    <option value="abia">Abia</option>
+					<option value="adamawa">Adamawa</option>
+					<option value="akwa-ibom">Akwa Ibom</option>
+					<option value="anambra">Anambra</option>
+					<option value="bauchi">Bauchi</option>
+					<option value="bayelsa">Bayelsa</option>
+					<option value="benue">Benue</option>
+					<option value="borno">Borno</option>
+					<option value="cross-river">Cross River</option>
+					<option value="delta">Delta</option>
+					<option value="ebonyi">Ebonyi</option>
+					<option value="edo">Edo</option>
+					<option value="ekiti">Ekiti</option>
+					<option value="enugu">Enugu</option>
+					<option value="gombe">Gombe</option>
+					<option value="imo">Imo</option>
+					<option value="jigawa">Jigawa</option>
+					<option value="kaduna">Kaduna</option>
+					<option value="kano">Kano</option>
+					<option value="katsina">Katsina</option>
+					<option value="kebbi">Kebbi</option>
+					<option value="kogi">Kogi</option>
+					<option value="kwara">Kwara</option>
+					<option value="lagos">Lagos</option>
+					<option value="nasarawa">Nasarawa</option>
+					<option value="niger">Niger</option>
+					<option value="ogun">Ogun</option>
+					<option value="ondo">Ondo</option>
+					<option value="osun">Osun</option>
+					<option value="oyo">Oyo</option>
+					<option value="plateau">Plateau</option>
+					<option value="rivers">Rivers</option>
+					<option value="sokoto">Sokoto</option>
+					<option value="taraba">Taraba</option>
+					<option value="yobe">Yobe</option>
+					<option value="zamfara">Zamfara</option>
+                    </select>
                 </span><br>
 
                 {{-- date of birth --}}
@@ -92,11 +130,15 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"/></svg>
                     </i>
                     
-                    <input type="password" name="password-confirmation" placeholder="Confirm Password">
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password">
                     <i id="password"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/></svg></i>
 
                     
                 </span><br>
+
+                <div class="container flex-center align-items-center">
+                    <input type="checkbox" name="remember" class="mr-3">Keep me signed in.
+                </div>
             </div>
         </section>
 

@@ -1,0 +1,510 @@
+@import '../utils/config';
+
+
+@media screen and (min-width: 1000px){
+    button{
+        cursor: pointer;
+    }
+
+    %all{
+        @include setTextBackground(white);
+        box-shadow: $shadow;
+        border-radius: 10px;
+    }
+
+    .p-button{
+        width: 100%;
+        text-align: right;
+    }
+
+    %inputDesk{
+        padding: 15px;
+        height: 40px;
+        box-shadow: 1px 1px 4px $dark-color;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        text-transform: capitalize;
+    }
+
+
+    .box-header{
+        color: $dark-color!important;
+        border-bottom: 1px solid $dark-color!important;
+        text-align: center!important;
+        font-size: 20px!important;
+        text-transform: uppercase!important;
+        padding: 5px!important;
+        opacity: .6;
+    }
+
+    div.hr{
+        height: 1px;
+        opacity: .5;
+        background-color: $dark-color;
+        width: 100%;
+    }
+
+    @mixin btn($background, $hover){
+        padding: 7px 12px;
+        box-shadow: $shadow;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        transition: $fade;
+        @include setTextBackground($background);
+
+        &:hover{
+            @include setTextBackground($hover);
+            box-shadow: 1px 2px 6px $hover;
+        }
+    }
+
+    section.profile{
+        position: fixed;
+        top: 70px;
+        left:0px;
+        height: 100vh;
+        padding: 10px;
+        width: 18%;
+
+        div.profile-sidebar{
+            @include setTextBackground(white);
+            margin: 0px;
+            height: 80%;
+            box-shadow: $shadow;
+            border-radius: 10px;
+            // padding: 10px;
+
+            div.image{
+                text-align: center;
+                width: 90%;
+                margin: 10px auto;
+
+                img{
+                    width: 70%;
+                    box-shadow: $shadow;
+                    border-radius: 100px;
+                }
+
+                div{
+                    position: absolute;
+                    background-color: rgba(247, 247, 250, 0.8);
+                    box-shadow: $shadow;
+                    padding: 7px 12px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    border-radius: 20px;
+                    transform: translateY(-45px);
+                    transition: $fade;
+
+                    svg{
+                        width: 17px;
+                        margin-right: 4px;
+                    }
+
+                    &:hover{
+                        cursor: pointer;
+                        background-color: white;
+
+                        &::after{
+                            content: "your photo";
+                            padding-left: 2px;
+                            animation: .5s edit forwards;
+
+                            @keyframes edit{
+                                from{
+                                    opacity: 0;
+                                }
+
+                                to{
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            form{
+                text-align: center;
+                margin: 20px auto;
+
+                button{
+                    @include btn($light-color, $red);
+                }
+
+            }
+
+            div.info{
+                display: none;
+            }
+
+            div.desktop-info{
+                display: block;
+
+                svg{
+                    width: 30px;
+                    fill: white;
+                }
+
+                section{
+                    background-color: $light-color;
+                    margin: 20px auto;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    box-shadow: $shadow;
+                    width: 90%;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    transition: $fade;
+
+                    i{
+                        padding: 10px;
+                        border-top-left-radius: 20px;
+                        border-bottom-left-radius: 20px;
+                        text-align: center;
+                        height: 100%;
+                        width: 30%;
+                        background-color: $primary-color;
+                    }
+                    
+                    span{
+                        padding: 10px;
+                        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                        font-size: medium;
+                    }
+
+                    &:hover{
+                        transform: rotateY(-30deg) translateX(10px) translateY(-2px);
+                        box-shadow: 1px 5px 10px $opaque;
+                    }
+                }
+            }
+            //div sidebar end here
+        }
+    }
+
+    section.body{
+        width: 100%;
+        margin-top: 80px;
+        display: flex;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        
+
+
+        section.leftMain{
+            width: 20%;
+        }
+
+        section.rightMain{
+            width: 80%;
+            padding-right: 15px;
+
+            section.top{
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+
+                section.left{
+                    width: 45%;
+
+                    section.personal{
+                        width: 100%;
+                        @extend %all;
+
+                        form{
+                            padding: 10px 20px;
+
+                            label{
+                                padding: 10px 0px 10px 30px;
+                            }
+
+                            input{
+                                @extend %inputDesk;
+                                width: 90%;
+                                margin: 10px auto;
+                                display: flex;
+                                justify-content: center;
+                            }
+
+                            button{
+                                @include btn($primary-color, $secondary-color);
+                            }
+
+                            p.birthday-title{
+                                text-align: center;
+                                font-size: 25px;
+                                padding: 10px ;
+                            }
+
+                            div.birthday{
+                                width: 90%;
+                                margin: 20px auto;
+                                display: flex;
+                                justify-content: space-around;
+                                align-items: center;
+                                
+                                
+                                span{
+                                    text-align: center;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+
+                                    label{
+                                        padding: 10px 0px;
+                                    }
+
+                                    select{
+                                        @extend %inputDesk;
+                                        border-radius: 10px;
+                                        padding: 10px;
+                                    }
+
+                                 
+                                }
+                                span.skew{
+                                    transform: translateY(-10px);
+
+                                    select{
+                                        height: 50px;
+                                    }
+                                }
+
+
+                            }
+
+                            div.address{
+                                text-align: center;
+                                margin: 20px auto;
+
+                                label{
+                                    padding: 10px 0px;
+                                }
+
+                                input{
+                                    text-align: center;
+                                }
+
+                                section.first{
+                                display: flex;
+                                justify-content: space-between;
+                                }
+
+                                div.second{
+                                    width: 40%;
+                                    margin: 10px auto;
+                                    text-align: center;
+                                }
+                            }
+
+
+                        }
+                    }
+
+
+                    section.email{
+                        @extend %all;
+                        margin-top: 30px;
+
+                        form{
+                            padding: 10px 20px;
+
+                            label{
+                                padding: 10px 0px 10px 30px;
+                            }
+
+                            input{
+                                @extend %inputDesk;
+                                width: 90%;
+                                margin: 10px auto;
+                                display: flex;
+                                justify-content: center;
+                            }
+
+                            button{
+                                @include btn($primary-color, $secondary-color);
+                            }
+                        }
+                    }
+                }
+
+                section.right{
+                    width: 45%;
+
+                    section.password{
+                        @extend %all;
+
+                        form{
+                            padding: 10px 20px;
+
+                            svg{
+                                width: 30px;
+                            }
+
+                            label{
+                                padding: 10px 0px 10px 30px;
+                            }
+
+                            input{
+                                @extend %inputDesk;
+                                width: 90%;
+                                margin: 10px auto;
+                                display: flex;
+                                justify-content: center;
+                            }
+
+                            div.password{
+                                display: flex;
+                                justify-content: space-around;
+                                align-items: center;
+
+                                div{
+                                    width: 100%;
+                                }
+
+                                i{
+                                    display: inline-block;
+                                    position: absolute;
+                                    right: 5%;
+                                    transform: translateY(10px);
+                                }
+                            }
+
+                            button{
+                                @include btn($primary-color, $secondary-color);
+                            }
+                        }
+                    }
+
+                    section.preference{
+                        @extend  %all;
+                        margin: 30px auto;
+
+
+                        form{
+                            padding: 10px;
+
+                            div{
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin: 40px auto;
+                            }
+
+                            button{
+                                @include btn($primary-color, $secondary-color);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            section.bottom{
+                margin-top: 70px;
+
+
+                section.payments{
+                    @extend %all;
+
+                    p.payments-p{
+                        font-family: monospace;
+                        padding: 10px;
+                    }
+
+                    button{
+                        margin: 10px;
+                        @include btn($primary-color, $secondary-color);
+                    }
+                }
+
+                section.sessions{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 30px auto;
+
+                    section.first{
+                        width: 40%;
+
+                        p.box-header{
+                            border-bottom: none!important;
+                            opacity: 1;
+                            text-align: left!important;
+                            padding-left: 0px!important;
+                        }
+
+                        p.content{
+                            font-size: medium;
+                        }
+                    }
+
+                    section.second{
+                        @extend %all;
+                        width: 50%;
+
+                        p{
+                            font-size: medium;
+                            padding: 15px;
+                        }
+
+                        form{
+                            padding: 20px;
+
+                            button{
+                                @include btn($primary-color, $red);
+                            }
+                        }
+                    }
+                }
+
+                section.delete{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 30px auto;
+
+                    section.first{
+                        width: 40%;
+
+                        p.box-header{
+                            border-bottom: none!important;
+                            opacity: 1;
+                            text-align: left!important;
+                            padding-left: 0px!important;
+                        }
+
+                        p.content{
+                            font-size: medium;
+                        }
+                    }
+
+                    section.second{
+                        @extend %all;
+                        width: 50%;
+
+                        p{
+                            font-size: medium;
+                            padding: 15px;
+                        }
+
+                        form{
+                            padding: 20px;
+
+                            button{
+                                @include btn($red, $primary-color);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //right main
+        }
+    }
+}

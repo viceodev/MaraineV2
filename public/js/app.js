@@ -23,3 +23,105 @@ document.querySelector('a.close').addEventListener('click', closeMessage);
 
 }
 
+if(document.querySelector('#nav-modal')){
+    $nav = document.querySelector('section#nav-modal');
+    $main =  document.querySelector('section#nav-modal nav');
+    let status = false;
+
+    let toggle = function(e){
+            if(e.target == $nav){
+                show();
+            }
+    }
+
+    let show =  function(){
+        if(status === false){
+            $nav.style.cssText = `display: block`;
+            $main.classList.add('fade');
+            $main.style.cssText = "transform: scale(100%);";   
+            status = true;
+        }else if(status === true){
+            $main.style.cssText = "transform:scale(200%);";
+            $nav.style.cssText = `display: none;`;
+            status = false;
+        }
+        
+    }
+
+
+    let profiles = document.querySelectorAll('#profile');
+
+    profiles.forEach((profile) => {
+        profile.addEventListener('click', show);
+    });
+
+    window.addEventListener('click', toggle);
+}
+
+if(document.querySelector(".sidebar")){
+    let sidebar = document.querySelector(".sidebar");
+    let toggles = document.querySelectorAll("div.sidebar-toggle");
+    let status = false;
+
+    let toggle =  function(e){
+        if(e.target == sidebar){
+            show();
+        }
+    }
+
+    let show =  function(){
+        if(status === false){
+           sidebar.style.cssText = "left:0; background-color: rgba(0,0,100, 0.1);"; 
+           status = true;
+        }else{
+            sidebar.style.cssText = "left: = -100%; background-color:transparent;";
+            status = false;
+        }
+        
+    }
+
+
+    toggles.forEach((toggle) => {
+        toggle.addEventListener('click', show);
+    });
+    
+    window.addEventListener('click', toggle);
+}
+
+if(document.querySelector('input#search')){
+    let search = document.querySelector('input#search');
+
+    let show =  function(){
+        search.style.cssText = "border-color: blue;";
+    }
+
+    let toggle = function(){
+        search.style.cssText = "border-color: black";
+    }
+
+    search.addEventListener('focus', show);
+    search.addEventListener('blur', toggle);
+}
+
+if(document.querySelectorAll("i[id^='password']")){
+    let passwords = document.querySelectorAll("i[id^='password']");
+
+    passwords.forEach((password) => {
+        let passwordId = password.id;
+        
+        password.setAttribute('onclick', `changeEye('${passwordId}')`);
+        password.classList.add('fade');
+    });
+}
+
+if(document.querySelector("#dark")){
+    let dark =  document.querySelector("#dark");
+
+    let darkMode =  function(){
+        let html =  document.querySelector('html');
+
+        html.classList.add('dark');
+    }
+
+    dark.onclick = darkMode;
+}

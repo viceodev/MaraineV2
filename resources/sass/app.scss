@@ -1,4 +1,4 @@
-@import 'config';
+@import './utils/config';
 
 *{
     box-sizing: border-box;
@@ -8,6 +8,12 @@
 
 body{
     @include setTextBackground($light-color);
+    font-family: Nunito 'sans-serif';
+}
+
+.dark{
+    background-color: $dark-color;
+    filter: invert(1) hue-rotate(180deg);
 }
 
 img{
@@ -15,5 +21,5 @@ img{
 }
 
 
-@import 'utilities';
-@import 'media';
+@import './utils/utilities';
+@import './utils/media';

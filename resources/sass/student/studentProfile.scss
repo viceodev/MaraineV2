@@ -1,0 +1,334 @@
+@import '../utils/config';
+
+
+
+@media screen and (max-width: 1000px){
+.box-header{
+    color: $dark-color!important;
+    border-bottom: 1px solid $dark-color!important;
+    text-align: center!important;
+    font-size: 25px!important;
+    text-transform: uppercase!important;
+    font-family: 'Courier New', Courier, monospace!important;
+    padding: 5px!important;
+}
+
+%input{
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid $dark-color;
+    text-transform: capitalize;
+    box-shadow: $shadow;
+}
+
+%button{
+    padding: 8px 15px 8px 15px;
+    @include setTextBackground($dark-color);
+    border: none;
+    box-shadow: $shadow;
+    text-transform: uppercase;
+    outline: none;
+    border-radius: 10px;
+    transition: $fade;
+
+}
+
+label{
+    font-family: cursive;
+}
+
+
+
+section.profile{
+
+
+    div.profile-sidebar{
+        width: 100%;
+        background-color: white;
+        box-shadow: $shadow;
+        padding: auto 10px;   
+        margin: 52px auto auto auto;
+
+        div.image{
+            background-color: $secondary-color;
+            background-image: url("../img/science.png");
+            background-size: cover;
+            background-attachment: fixed;
+            // background-blend-mode: overlay;
+            padding: 10px 0px 10px 0px;
+            box-shadow: $shadow;
+
+            img{
+                width: 100px;
+                border-radius: 50px;
+                margin: auto;
+                display: flex;
+                justify-self: center;
+            }
+
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $light-color;
+                box-shadow: $shadow;
+                width: 100px;
+                margin: auto;
+                margin-top: 5px;
+                padding: 8px 10px 8px;
+
+                svg{
+                    width: 30px;
+                }
+            }
+        }
+
+        form{
+            text-align: center;
+            width: 70%;
+            margin: 20px auto 10px auto;
+
+            button{
+                @extend %button;
+            }
+        }
+
+        div.info{
+            width: 100%;
+            text-align: center;
+            padding-bottom: 10px;
+
+            div.first{
+                width: 100%;
+                padding: 10px;
+                display: flex;
+                justify-content: space-around;
+            }
+
+            section.second{
+                margin: auto;
+            }
+
+        }
+    }
+
+}  
+
+.header-box{
+    padding: 7px;
+    box-shadow: $shadow;
+    width: 40%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+section.personal{
+    margin-top: 10px;
+
+
+    form{
+        margin: 10px auto;
+        text-align: center;
+
+        label{
+            font-family: cursive;
+            width: 100%;
+        }
+
+
+
+        input{
+            @extend %input;
+        }
+
+        button{
+            @extend %button;
+        }
+
+        div.birthday{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px auto;
+
+            span{
+                display: flex;
+                flex-direction: column;
+
+                select{
+                    @extend %input;
+                    padding: 10px;
+                }
+            }
+        }
+
+        div.address{
+
+            label{
+                &::after{
+                    content: attr("<br>");
+                    padding: 5px;
+                    background-color: $dark-color;
+                }
+            }
+        }
+    }
+}        
+
+section.email{
+    @include setTextBackground(white);
+    box-shadow: $shadow;
+    padding: 10px;
+    text-align: center;
+
+    p.box-header{
+        margin: 10px 0px!important;
+    }
+
+    form{
+        label{
+            padding: 10px!important;
+        }
+
+        input{
+            @extend %input;
+        }
+
+        button{
+            @extend %button;
+        }
+    }
+}
+
+section.password{
+    margin: 20px auto;
+    text-align: center;
+
+    form{
+        i{
+            position: absolute;
+            transform: translateX(-30px) translateY(10px);
+        }
+
+        input{
+            @extend %input;
+        }
+
+        button{
+            @extend %button;
+        }
+    }
+}
+
+section.preference{
+    @include setTextBackground(white);
+    box-shadow: $shadow;
+    margin: 10px auto;
+
+    form{
+        padding: 10px;
+
+        div{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 90% 10%;
+            margin: 30px auto;
+
+            input{
+                @extend %input;
+            }
+        }
+
+        button{
+            @extend %button;
+        }
+    }
+}
+
+
+section.payments{
+    margin: 20px auto;
+    
+
+    p.payments-p{
+        padding: 10px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    a{
+        display: inline-block;
+        padding: 10px;
+
+        button{
+            @extend %button;
+        }  
+    }
+    
+}
+
+
+section.sessions{
+    margin: 10px auto;
+    @include setTextBackground(white);
+    box-shadow: $shadow;
+    padding: 10px 0px;
+
+
+    section.first{
+
+        p{
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: medium;
+        }
+    }
+
+
+    section.second{
+        p{
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: medium;
+        }
+
+
+        form{
+            padding: 10px;
+
+             button{
+                @extend %button;
+            }
+        }
+        
+    }
+}
+
+section.delete{
+    margin: 10px auto;
+
+    section.first,section.second{
+        
+
+        p{
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: medium;  
+        }
+        
+        form{
+
+            padding: 10px;
+            button{
+                @extend %button;
+            }
+        }
+    }
+}
+}
+
+
+@import './studentProfileDesktop';

@@ -1,0 +1,250 @@
+@import '../utils/config';
+body{
+    height: 3000px;
+}
+
+section.hero{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    @include setTextBackground($primary-color);
+    padding: 10px 10px 20px 10px;
+
+
+    div{
+        box-shadow: 1px 3px 10px $light-color;
+
+        h1{
+            font-size: 30px;
+            width: 70%;
+            margin: auto;
+            margin-bottom: 5px;
+            border-bottom: 1px solid $light-color;
+        }
+
+    }
+    
+}
+
+section.info-body{
+    margin-bottom: 100px;
+
+    div{
+        width: 70%;
+        height: 250px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        svg{
+            margin-top: 20px;
+            height: 150px;
+            width: 150px;
+        }
+
+        p{
+            font-size: 20px;
+            text-transform: uppercase;
+            @include setTextBackground($primary-color);
+            width: 100%;
+            padding: 15px 0px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        span{
+            position: absolute;
+            @include setTextBackground($primary-color);
+            padding: 15px 20px 15px 20px;
+            border-radius: 40px;
+            border: none;
+            outline: none;
+            transform: translateX(110px) translateY(10px);
+            box-shadow: 1px 4px 7px $opaque;
+            z-index: 0;
+        }
+    }
+}
+
+
+section.latest{
+    margin-top: 10px;
+    text-align: center;
+
+    section.table-container{
+        
+        margin: 10px auto 100px auto;
+
+        section.table{
+            width: 95%;
+            margin: auto;
+            @include setTextBackground(white);
+            padding: 15px;
+            margin: 10px auto 20px auto;
+         
+
+
+
+            table{
+                width: 100%;
+                border: none;
+
+                th{
+                    font-size: 20px; 
+                    padding: 5px 10px; 
+                    border-bottom: 1px solid gray;         
+                }
+
+                td{
+                    padding: 5px;
+                    text-align: center;
+                    border-right: 1px solid gray;
+                    background-color: $light-color;
+                    transition: .5s all;
+                }
+
+                td:hover{
+                    background-color: darken($light-color, 10);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    section.events{
+
+
+        div.events-content{
+            margin: 10px auto;
+            width: 90%;
+            @include setTextBackground(white);
+            box-shadow: $shadow-sm;
+            transition: .5s all;
+            
+            a{
+                    color: $dark-color;
+            }
+
+            img{
+                width: 100%;
+                height: 250px;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+            }
+
+            div{
+                display: flex;
+                flex-direction: column;
+                font-size: 25px;
+
+                span{
+                    padding: 5px 10px;
+                    align-self: flex-end;
+                }
+            }
+
+            &:hover{
+                opacity: .8;
+            }
+        }
+
+    }
+}
+
+
+@media screen and (min-width: 768px){
+    section.info-body{
+        div{
+            margin: auto 20px;
+        }
+    }
+}
+
+
+
+@media screen and (min-width: 1000px){
+
+    section.hero{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px 10px;
+        
+        img{
+            display: block;
+            width: 40%;
+            padding: 20px;
+        }
+
+        div{
+            width: 40%;
+        }
+    }
+
+    section.info-body{
+        margin-top: 40px;
+
+        div{
+            width: 25%;
+        }
+    }
+
+
+    section.latest{
+        display: flex;
+        justify-content: space-around;
+
+        section.table-container{
+            width: 65%;
+            height: 100%;
+        }
+
+
+        section.events{
+            width: 20%;
+            @include setTextBackground(white);
+            text-align: right;
+            margin-right: 10px;
+
+            p.title-sm{
+                @include setTextBackground(transparent);
+                color: $dark-color;
+            }
+
+            div.hr{
+                height: 1px;
+                background-color: $dark-color;
+                width: 100%;
+                opacity: .4;
+                margin: 5px auto;
+            }
+
+            div.events-content{
+
+
+                a{
+                    display: flex;
+
+                    img{
+                        width: 100px;
+                        height: 100px;
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                    }
+
+                    div{
+                        padding-top: 20px;
+                        padding-right: 3px;
+                        font-size: 14px;
+                        display: flex;
+                        justify-content: space-between;
+                    }                    
+                }
+
+            }
+
+        }
+    }
+}
+
