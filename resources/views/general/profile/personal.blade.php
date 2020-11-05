@@ -1,7 +1,7 @@
 <section class="personal">
     <p class="box-header">Edit Your personal details</p>
 
-    <form action="" method="POST">
+    <form action="{{route('profile.personal.update')}}" method="POST">
         @csrf
 
         <label for="name">Full name</label><br>
@@ -44,18 +44,18 @@
 
                 <div>
                     <label for="lga">L.G.A</label><br>
-                    <input type="text" name="lga" id="lga" value="{{Auth::user()->state}}">
+                    <input type="text" name="lga" id="lga" placeholder="Local Govt. Area" value="{{Auth::user()->lga}}">
                 </div>                
             </section>
 
 
             <div class="second">
                 <label for="postal">Postal Code</label><br>
-                <input type="text" name="postal" id="postal" value="{{Auth::user()->state}}">
+                <input type="text" name="postal" id="postal" placeholder="Postal Code" value="{{Auth::user()->postal_code}}">
             </div>
         </div>
 
-        <div class="hr mb-5"></div>
+        <div class="hr mb-2"></div>
 
         <div class="p-button">
             <button type="submit">Update Details</button>

@@ -6,6 +6,7 @@
     use App\Events\NewUser;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
+    use Illuminate\Auth\Events\Registered;
 
     trait RegisterTraits{
 
@@ -57,6 +58,7 @@
                 }else{
                     
                     event(new NewUser($user));
+                    event(new Registered($user));
                     if($remember == 'on'){
                         Auth::login($user,true);
                     }else{
@@ -111,6 +113,7 @@
             $password = $request->password;
             $picture = asset('storage/picture/profile.svg');
             $role = 'student';
+            $email_preference = array('security', 'update', 'products');
 
             $user = new User();
             $user->name = $name;
@@ -118,6 +121,8 @@
             $user->email = $email;
             $user->phone = $phone;
             $user->state = $state;
+            $user->level = 100;
+            $user->email_preference = $email_preference;
             $user->reg_no = $reg_no;
             $user->dob = $dob;
             $user->picture = $picture;

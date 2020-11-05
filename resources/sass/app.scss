@@ -5,6 +5,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+}
 
 body{
     @include setTextBackground($light-color);
@@ -12,12 +15,20 @@ body{
 }
 
 .dark{
-    background-color: $dark-color;
+    background-color: black;
     filter: invert(1) hue-rotate(180deg);
 }
 
 img{
     width: 400px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
 }
 
 

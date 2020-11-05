@@ -8,9 +8,9 @@
 <section class="hero shadow">
     <img src="{{asset('img/invite.svg')}}" alt="invite management" class="d-none">
 
-    <div class="rounded p-3">
+    <div class="rounded p-2">
         <h1 class="capitalize center">Welcome back {{Auth::user()->username}}</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eligendi temporibus qui facilis corrupti vel quidem doloribus facere accusamus eum! Molestias, consectetur qui facilis necessitatibus asperiores ducimus corporis explicabo excepturi eaque, accusamus dignissimos maiores mollitia eius minima sapiente? Aut, eaque?</p>
+        <p class="sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eligendi temporibus qui facilis corrupti vel quidem doloribus facere accusamus eum! Molestias, consectetur qui facilis necessitatibus asperiores ducimus corporis explicabo excepturi eaque, accusamus dignissimos maiores mollitia eius minima sapiente? Aut, eaque?</p>
     </div>
 </section>
 

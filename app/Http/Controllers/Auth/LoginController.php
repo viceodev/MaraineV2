@@ -14,11 +14,11 @@ class LoginController extends Controller
     use LoginTraits;
 
     public function show(){
-        if(Auth::check()){
-            return redirect(Auth::user()->role."/");
-        }else{
+        // if(Auth::check()){
+        //     return redirect(Auth::user()->role."/");
+        // }else{
             return view('auth.login');
-        }
+        // }
         
     }
 
@@ -36,6 +36,14 @@ class LoginController extends Controller
 
     public function socials_callback($provider){
         return $this->LoginSocial($provider);
+    }
+
+    public function forgot_instance(Request $request){
+        return $this->forgot_start($request);
+    }
+
+    public function reset_password(Request $request){
+        return $request;
     }
 
     public function logout(Request $request){

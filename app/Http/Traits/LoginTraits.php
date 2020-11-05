@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Traits\RegisterTraits;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Password;
+use App\Models\Assignments;
 
 trait LoginTraits{
 
@@ -43,12 +45,14 @@ trait LoginTraits{
                 back()->withInput()->with('error', 'You have been banned.Please contact our support team via <a href="mailto::support@jetstream.com">Support@jetstream.com</a>');
             }elseif($remember){
                 if(Auth::attempt(['email' => $email, 'password' => $request->password], $remember)){
+                    $this->getUserInfo();
                     return redirect()->intended(Auth::user()->role."/");
                 }else{
                     return back()->withInput()->with('error', 'Your password is incorrect');
                 }
             }else{
                 if(Auth::attempt(['email' => $email, 'password' => $request->password])){
+                    $this->getUserInfo();
                     return redirect()->intended(Auth::user()->role);
                 }else{
                     return back()->withInput()->with('error', 'Your password is incorrect');
@@ -59,6 +63,27 @@ trait LoginTraits{
         }
 
 
+    }
+
+    public function getUserInfo(){
+        if(auth()->user()->courses != null){
+            $courses = json_decode(auth()->user()->courses, true);
+            $user_courses = array_merge($courses['main'],$courses['optional'],$courses['language']);
+            $assignments = json_decode(Assignments::where('level', auth()->user()->level)->latest()->get(), true);
+            $assignment_id = [];
+
+            foreach($assignments as $assignment){
+                if(in_array($assignment['course'], $user_courses)){
+                    $assignment_id[] = $assignment['id'];
+                }
+            }
+
+            session(['user_courses'=> $user_courses]);
+            session(['user_assignments' => $assignment_id]);
+        }else{
+            session(['user_courses'=> 0]);
+            session(['user_assignments' => 0]);
+        }
     }
 
     public function LoginSocial($provider){
@@ -89,5 +114,40 @@ trait LoginTraits{
         Auth::login($user, true);
 
         return redirect()->intended(Auth::user()->role."/");
+    }
+
+    public function forgot_start($request){
+        $user_info = $request->userinfo;
+
+        if(empty($user_info)){
+            return back()->with('error', 'Please fill out the form');
+        }else{
+
+            $user = User::where('phone', $user_info)->get();
+
+            if(count($user) == 0){
+                $user = User::where('username', $user_info)->get();
+            }
+
+            if(count($user) == 0){
+                $email = $user_info;
+            }
+
+
+            if(count($user) > 0){
+                $email = $user[0]->email;
+            
+                $request['email'] = $email;
+
+                $status = Password::sendResetLink(
+                    $request->only('email')
+                );
+            
+                return $status === Password::RESET_LINK_SENT
+                            ? back()->with(['success' => ('Your email reset link has been sent to your email.')])
+                            : back()->withErrors(['email' => __($status)]);
+
+        }
+        }
     }
 }

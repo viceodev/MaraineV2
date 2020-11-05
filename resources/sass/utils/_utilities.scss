@@ -36,6 +36,14 @@ a{
 li,input, textarea{
     outline: none;
 }
+
+input, textarea, select{
+    transition: $fade;
+    
+    &:hover{
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5)!important ;
+    }
+}
 .container{
     width: 80%;
     margin: auto;
@@ -46,52 +54,69 @@ li,input, textarea{
 }
 
 img{
-    width: 500px;
+    width: 100%;
 }
 
 //margin and padding functionality 
 $listNum: (0,1,2,3,4,5);
 @each $num in $listNum{
     .p-#{$num}{
-        padding: #{$num * 5}px;
+        padding: #{$num}rem;
     }
 
     .pl-#{$num}{
-        padding-left: #{$num * 5}px;
+        padding-left: #{$num}rem;
     }
 
     .pr-#{$num}{
-        padding-right: #{$num * 5}px;
+        padding-right: #{$num}rem;
     }
 
     .pt-#{$num}{
-        padding-top: #{$num * 5}px;
+        padding-top: #{$num}rem;
     }
 
     .pb-#{$num}{
-        padding-bottom: #{$num * 5}px;
+        padding-bottom: #{$num}rem;
     }
 
     .m-#{$num}{
-        margin: #{$num * 5}px;
+        margin: #{$num}rem;
     }
 
     .ml-#{$num}{
-        margin-left: #{$num * 5}px;
+        margin-left: #{$num}rem;
     }
 
     .mr-#{$num}{
-        margin-right: #{$num * 5}px;
+        margin-right: #{$num}rem;
     }
 
     .mt-#{$num}{
-        margin-top: #{$num * 5}px;
+        margin-top: #{$num}rem;
     }
 
     .mb-#{$num}{
-        margin-bottom: #{$num * 5}px!important;
+        margin-bottom: #{$num}rem!important;
+    }
+
+    .px-#{$num}{
+        padding: #{$num}rem 0;
+    }
+
+    .py-#{$num}{
+        padding: 0 #{$num}rem ;
+    }
+
+    .mx-#{$num}{
+        margin: #{$num}rem 0;
+    }
+    .my-#{$num}{
+        padding:0 #{$num}rem ;
     }
 }
+
+
 
 .m-auto{
     margin: auto!important;
@@ -105,19 +130,17 @@ $listNum: (0,1,2,3,4,5);
 
 //buttons
 %btn{
-    display: inline-block;
+    display: inline;
     margin: 5px;
-    width: 100px;
     height: 40px;
     outline: none;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: .4s;
+    transition: $fade;
+    padding: 0px 15px;
 
     &:hover{
-        transform: translateY(3px);
-        border: 2px solid;
         border-color: inherit;
     }
 }
@@ -129,11 +152,21 @@ $listNum: (0,1,2,3,4,5);
 .button-primary{
     @extend %btn;
     @include setTextBackground($primary-color);
+
+    &:hover{
+        background-color: $secondary-color;
+        box-shadow: 1px 2px 6px $secondary-color;
+    }
 }
 
 .button-secondary{
     @extend %btn;
     @include setTextBackground($secondary-color);
+
+    &:hover{
+        background-color: $primary-color;
+        box-shadow: 1px 2px 6px $primary-color;
+    }
 }
 //button end
 
@@ -185,6 +218,10 @@ $listNum: (0,1,2,3,4,5);
     box-shadow: .4px 1px 3px $dark-color;
 }
 
+.shadow-ts{
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
 .rounded{
     border-radius: 10px;
 }
@@ -210,14 +247,19 @@ $listNum: (0,1,2,3,4,5);
     text-transform: capitalize;
 }
 
+.uppercase{
+    text-transform: uppercase;
+}
+
 .center{
     text-align: center;
 }
 
+
 .message{
     // padding: 15px;
     position: fixed;
-    top: 20px;
+    top: 60px;
     right: 0;
     font-weight: 400;
     width: 400px;
@@ -284,6 +326,10 @@ $listNum: (0,1,2,3,4,5);
     @include alert($orange);
 }
 
+.message-info{
+    @include alert(blue);
+}
+
 
 .modal{
     width: 100%;
@@ -308,4 +354,51 @@ $listNum: (0,1,2,3,4,5);
 
 .fade{
     transition: .5s all;
+}
+
+.card{
+    @include setTextBackground(white);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: $fade;
+
+    &:hover{
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 10px $opaque;
+    }
+}
+
+.sm{
+    font-size: 1rem;
+}
+
+.md{
+    font-size: 2rem;
+}
+
+.lg{
+    font-size: 3rem;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.p-button{
+    text-align: right;
+}
+
+.hr{
+    height: 1px;
+    background-color: $dark-color;
+    width: 100%;
+    opacity: .4;
+    margin: 5px auto;
+}
+
+.opacity{
+    opacity: 0!important;
+    pointer-events: none;
 }

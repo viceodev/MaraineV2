@@ -1,10 +1,6 @@
 {{-- desktop header  --}}
 <header class="desktop d-none shadow-sm">
 
-
-
-
-
     <div class="logo flex align-items-center ml-2" title="Maraine Logo">
         <img src="{{asset('img/favicon.png')}}" alt="{{config('app.name')}}">
         <span class="ml-1 pl-1">{{config('app.name')}}</span>
@@ -95,13 +91,13 @@
                 {{Auth::user()->username}}
             </b></li><div class="hr"></div>
 
-            <a href="#"><li class="pl-2 pb-1">My Assignments</li></a>
+            <a href="{{route(Auth::user()->role.".assignments")}}"><li class="pl-2 pb-1">My Assignments</li></a>
 
-            <a href="#"><li class="pl-2 pb-1">My Fees\Payments</li></a>
+            <a href="{{route(Auth::user()->role.".payments")}}"><li class="pl-2 pb-1">My Fees\Payments</li></a>
 
-            <a href="#"><li class="pl-2 pb-1">My Support</li></a>
+            <a href="{{route(Auth::user()->role.".tickets")}}"><li class="pl-2 pb-1">My Support</li></a>
 
-            <a href="{{route('student.profile', [Auth::user()->role, Auth::user()->username])}}"><li class="pl-2 pb-1">My Profile</li></a>
+            <a href="{{route('profile', [Auth::user()->username])}}"><li class="pl-2 pb-1">My Profile</li></a>
             
             <div class="hr"></div>
 
@@ -125,9 +121,9 @@
             Quick-Links
         </div>
 
-        <ul class="pl-5 pr-5">
+        <ul class="pl-2 pr-2">
             <a href="{{route('student.home')}}"><li>Home</li></a>
-            <a href="#"><li>See Assignments</li></a>
+            <a href="{{route(Auth::user()->role.".assignments")}}"><li>See Assignments</li></a>
             <a href="#"><li>Submit Assignments</li></a>
             <a href="#"><li>See Tickets</li></a>
             <a href="#"><li>Create New Tickets</li></a>

@@ -59,18 +59,10 @@ section.mobile_menu{
     background-color: $opaque;
     z-index: 100;
 
-    div.hr{
-        height: 1px;
-        background-color: $dark-color;
-        width: 100%;
-        opacity: .4;
-        margin: 5px auto;
-    }
-
     svg{
         fill: white;
         position: absolute;
-        right: 10%;
+        right: 8%;
         top: -10px;
         transform: rotateX(180deg);
         height: 30px;
@@ -299,7 +291,7 @@ section.sidebar{
     section.mobile_menu{
 
         svg{
-            right: 4.5%;
+            right: 2.5%;
         }
 
         nav{

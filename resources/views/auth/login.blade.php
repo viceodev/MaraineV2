@@ -31,7 +31,7 @@
                 </div>
                 <div class="button-area">
                     <button type="submit">Login</button>
-                    <a href="#">Forgot Password?</a>
+                    <a href="{{route('password.email')}}">Forgot Password?</a>
                 </div>
                 
                 <span class="check m-large">Don't  have an account? &nbsp;<a href="{{route('register')}}"> Register</a></span>

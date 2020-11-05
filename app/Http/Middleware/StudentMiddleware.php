@@ -18,7 +18,7 @@ class StudentMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role != 'student'){
-            return back()->with('error', 'You are not allowed to access this page');
+            return back()->with('error', 'You are not allowed to access this page if you are not a student');
         }else{
             return $next($request);
         }

@@ -21,6 +21,13 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique()->nullable();
             $table->string('reg_no')->unique();
             $table->string('state')->nullable();
+            $table->string('lga')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('level');
+            $table->date('payment_due_date')->nullable();
+            $table->json('courses')->nullable();
+            $table->json('email_preference');
+            $table->json('payment_options')->nullable();
             $table->date('dob')->nullable();
             $table->string('banned')->nullable();
             $table->string('picture');

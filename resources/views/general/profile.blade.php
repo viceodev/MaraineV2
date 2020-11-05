@@ -7,7 +7,8 @@
 @section('content')
 
     {{-- including the sidebar --}}
-    @include('student.profile.sidebar')
+    @include('general.profile.sidebar')
+    @include('general.profile.payments')
 
     <section class="body">
 
@@ -17,13 +18,13 @@
         <section class="rightMain capitalize">
             <section class="top">
                 <section class="left">
-                    @include('student.profile.personal')
-                    @include('student.profile.email')
+                    @include('general.profile.personal')
+                    @include('general.profile.email')
                 </section>
 
                 <section class="right">
-                    @include('student.profile.password_reset')
-                    @include('student.profile.preferences')
+                    @include('general.profile.password_reset')
+                    @include('general.profile.preferences')
                 </section>
             </section>
 
@@ -35,12 +36,44 @@
                     <div class="hr"></div>
 
                     <div class="p-button">
-                        <a href="#"><button>ADD OPTION</button></a>
+                        <button id="payments-trigger">ADD OPTION</button>
                     </div>
+
+                    <script>
+                        let p_status = false;
+                        let modal =  document.querySelector("div#payments-modal");
+
+                        let p_trigger = function(e){
+                            if(e.target == modal){
+                                e.preventDefault();
+                                modal.style.display = "none";
+                                modal.classList.toggle('d-none');
+                                p_status = false;
+                            }
+                        }
+
+                        let payments =  function(e){
+                            e.preventDefault();
+                            
+                            if(p_status === false){
+                                modal.style.display = "flex";
+                                // modal.classList.toggle('d-none');       
+                                p_status = true;                       
+                            }else if(p_status === true){
+                                modal.style.display = "none";
+                                modal.classList.toggle('d-none');
+                                p_status = false;
+                            }
+
+                        }
+                        document.querySelector("button#payments-trigger").addEventListener("click", payments);
+                        window.onclick = p_trigger;
+                    </script>
                     
                 </section>
 
-                <div class="hr mt-5 mb-5"></div>
+                <div class="hr mx-5"></div>
+
                 <section class="sessions">
                         <section class="first">
                             <p class="box-header">Browser's Sessions</p>
@@ -50,7 +83,7 @@
                         <section class="second">
                             <p>If necessary, you may logout of all of your other browser sessions across all of your devices. If you feel your account has been compromised, you should also update your password. </p>
 
-                            <form action="" method="POST">
+                            <form action="{{route('profile.sessions.logout')}}" method="POST">
                                 @csrf 
 
                                 <div class="hr mt-3 mb-5"></div>
@@ -73,8 +106,9 @@
 
                     <section class="second">
                         <p>Once your account it deleted, it cannot be retrieved</p>
-                        <form action="" method="POST">
+                        <form action="{{route('profile.delete')}}" method="POST">
                             @csrf 
+                            @method('delete')
 
                             <div class="hr mt-3 mb-5"></div>
 
@@ -98,9 +132,6 @@
 
     let userdata = "<?php echo Auth::user()->dob; ?>";
     let datasplit = userdata.split('-');
-    console.log(datasplit);
-
-    //continue from here. Remove all options from html and do it with javascript so you can add the selected attribute to the correct option.
 
     let FocusMonth = function(month){
         let monthNum = parseInt(datasplit[1] - 1);
@@ -144,8 +175,6 @@
                 break;
             }
         }
-
-        // console.log(`${currentYear}, ${ageLimit}, ${legalAge}`);
     }
 
     let FocusDate = function(date){

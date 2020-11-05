@@ -1,0 +1,242 @@
+.opacity{
+    opacity: 0;
+}
+
+.box-header{
+    color: $dark-color!important;
+    border-bottom: 1px solid $dark-color!important;
+    text-align: center!important;
+    font-size: 20px!important;
+    text-transform: uppercase!important;
+    font-family: 'Courier New', Courier, monospace!important;
+    padding: 5px!important;
+}
+
+
+@media screen and (max-width: 1000px){
+
+section.profile{
+
+
+    div.profile-sidebar{
+        width: 100%;
+        background-color: white;
+        box-shadow: $shadow;
+        padding: auto 10px;   
+        margin: 52px auto auto auto;
+
+        div.image{
+            background-color: $secondary-color;
+            background-image: url("../img/science.png");
+            background-size: cover;
+            background-attachment: fixed;
+            // background-blend-mode: overlay;
+            padding: 10px 0px 10px 0px;
+            box-shadow: $shadow;
+
+            img{
+                width: 100px;
+                border-radius: 50px;
+                margin: auto;
+                display: flex;
+                justify-self: center;
+            }
+
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $light-color;
+                box-shadow: $shadow;
+                width: 100px;
+                margin: auto;
+                margin-top: 5px;
+                padding: 8px 10px 8px;
+
+                svg{
+                    width: 30px;
+                }
+            }
+        }
+
+        form{
+            text-align: center;
+            width: 70%;
+            margin: 20px auto 10px auto;
+        }
+
+        div.info{
+            width: 100%;
+            text-align: center;
+            padding-bottom: 10px;
+
+            div.first{
+                width: 100%;
+                padding: 10px;
+                display: flex;
+                justify-content: space-around;
+            }
+
+            section.second{
+                margin: auto;
+            }
+
+        }
+    }
+
+}  
+}
+
+
+@media screen and (min-width: 1000px){
+    section.profile{
+        z-index: 1000;
+    }
+    
+
+@mixin btn($background, $hover){
+    padding: 7px 12px;
+    box-shadow: $shadow;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: $fade;
+    @include setTextBackground($background);
+
+    &:hover{
+        @include setTextBackground($hover);
+        box-shadow: 1px 2px 6px $hover;
+    }
+}
+
+section.profile{
+    position: fixed;
+    top: 70px;
+    left:0px;
+    height: 100vh;
+    padding: 10px;
+    width: 18%;
+
+    div.profile-sidebar{
+        @include setTextBackground(white);
+        margin: 0px;
+        height: 80%;
+        box-shadow: $shadow;
+        border-radius: 10px;
+        // padding: 10px;
+
+        div.image{
+            text-align: center;
+            width: 90%;
+            margin: 10px auto;
+
+            img{
+                width: 70%;
+                box-shadow: $shadow;
+                border-radius: 100px;
+            }
+
+            div{
+                position: absolute;
+                background-color: rgba(247, 247, 250, 0.8);
+                box-shadow: $shadow;
+                padding: 7px 12px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                border-radius: 20px;
+                transform: translateY(-45px);
+                transition: $fade;
+
+                svg{
+                    width: 17px;
+                    margin-right: 4px;
+                }
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: white;
+
+                    &::after{
+                        content: "your photo";
+                        padding-left: 2px;
+                        animation: .5s edit forwards;
+
+                        @keyframes edit{
+                            from{
+                                opacity: 0;
+                            }
+
+                            to{
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        form{
+            text-align: center;
+            margin: 20px auto;
+
+            button{
+                @include btn($light-color, $red);
+            }
+
+        }
+
+        div.info{
+            display: none;
+        }
+
+        div.desktop-info{
+            display: block;
+
+            svg{
+                width: 30px;
+                fill: white;
+            }
+
+            a{
+                color: $dark-color;
+            }
+            section{
+                background-color: $light-color;
+                margin: 20px auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: $shadow;
+                width: 90%;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: $fade;
+
+                i{
+                    padding: 10px;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    text-align: center;
+                    height: 100%;
+                    width: 30%;
+                    background-color: $primary-color;
+                }
+                
+                span{
+                    padding: 10px;
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    font-size: medium;
+                }
+
+                &:hover{
+                    transform: rotateY(-30deg) translateX(10px) translateY(-2px);
+                    box-shadow: 1px 5px 10px $opaque;
+                }
+            }
+        }
+        //div sidebar end here
+    }
+}
+}
