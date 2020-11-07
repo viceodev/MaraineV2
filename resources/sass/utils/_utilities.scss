@@ -20,6 +20,14 @@
     @include setTextBackground($dark-color);
 }
 
+.bg-danger{
+    @include setTextBackground($red);
+}
+
+.bg-success{
+    @include setTextBackground($green);
+}
+
 hr{
     color: $secondary-color;
 }
@@ -149,6 +157,14 @@ $listNum: (0,1,2,3,4,5);
     @extend %btn;
 }
 
+.btn-trans{
+   
+    &:hover{
+        transform: translateY(10px);
+        box-shadow: 0px 5px 20px rgba(128, 128, 128, 0.1);
+    } 
+}
+
 .button-primary{
     @extend %btn;
     @include setTextBackground($primary-color);
@@ -173,7 +189,6 @@ $listNum: (0,1,2,3,4,5);
 //display flex functionality
 %flex{
     display: flex;
-    // align-items: center;
 }
 .flex{
     @extend %flex;
@@ -198,12 +213,12 @@ $listNum: (0,1,2,3,4,5);
     align-items: center;
 }
 
-.align-items-left{
-    align-items: left;
+.align-items-end{
+    align-items: flex-end;
 }
 
-.align-items-right{
-    align-items: right;
+.align-items-start{
+    align-items: flex-start;
 }
 
 .shadow{
@@ -219,7 +234,7 @@ $listNum: (0,1,2,3,4,5);
 }
 
 .shadow-ts{
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 20px rgba(128, 128, 128, 0.1);
 }
 
 .rounded{
@@ -272,6 +287,7 @@ $listNum: (0,1,2,3,4,5);
     justify-content: space-between;
     animation: 1s message forwards;
     margin-right: 2px;
+    z-index: 2000000000;
      
     div{
         

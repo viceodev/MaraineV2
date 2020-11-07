@@ -9,6 +9,8 @@ use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminTicketController;
+use App\Http\Controllers\Admin\AdminAssignmentsController;
+use App\Http\Controllers\Admin\AdminUsersController;
 
 
 
@@ -94,6 +96,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
       Route::post("/store", [AdminTicketController::class, 'store'])->name('admin.tickets.store');
       Route::delete("/delete/{id}", [AdminTicketController::class, 'destroy'])->name('admin.tickets.delete');
     });
+
+    Route::resource("assignments", AdminAssignmentsController::class);
+    Route::resource("users", AdminUsersController::class);
+    Route::get("/submissions/{id}", [AdminUsersController::class, 'allSubmits'])->name('admin.submissions.single');
+    Route::get("/submissions/user/{id}", [AdminUsersController::class, 'singleSubmits'])->name('admin.submissions.user');
+    Route::get("download/{filename}", [AdminAssignmentsController::class, 'download'])->name('admin.assignments.download');
+    Route::delete("/delete/{id}", [AdminUsersController::class, 'destroy'])->name('admin.user.delete');
+    Route::post("/ban", [AdminUsersController::class, 'ban'])->name('admin.user.ban');
 });
 
 // Route::get("/test", function(){

@@ -18,7 +18,7 @@ class CreateSubmitsTable extends Migration
             $table->string('assignment_id');
             $table->string('user_id');
             $table->string('course');
-            $table->string('short_note')->nullable();
+            $table->mediumText('short_note')->nullable();
             $table->string('file_url');
             $table->string('due');
             $table->timestamps();

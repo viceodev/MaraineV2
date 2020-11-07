@@ -20,7 +20,7 @@ class CreateAssignmentsTable extends Migration
             $table->string('lecturer');
             $table->string('title');
             $table->string('allowed');
-            $table->string('filename');
+            $table->string('filename')->nullable();
             $table->mediumText('short_note')->nullable();
             $table->date('submission_date');
             $table->timestamps();

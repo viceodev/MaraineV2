@@ -14,7 +14,6 @@
 
     @elseif(auth()->user()->role == 'admin')
     <link rel="stylesheet" href="{{asset("/css/admin.css")}}">
-    {{-- <link rel="stylesheet" href="{{asset("/bootstrap/app.css")}}"> --}}
     @endif
 
     @yield('customCss')
@@ -38,8 +37,8 @@
     @endif
 
 @yield('content')
-
 @include('layouts.message')
+
 
 </body>
 

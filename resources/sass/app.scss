@@ -12,6 +12,7 @@ html{
 body{
     @include setTextBackground($light-color);
     font-family: Nunito 'sans-serif';
+    word-wrap: break-word;
 }
 
 .dark{
@@ -29,6 +30,7 @@ ul{
 
 a{
     text-decoration: none;
+    color: $dark-color;
 }
 
 

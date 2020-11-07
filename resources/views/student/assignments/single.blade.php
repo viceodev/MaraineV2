@@ -70,10 +70,12 @@
 
         @endforeach
 
+        @if($assignment['filename'] != null)
         <form action="{{route('student.assignments.download', $assignment['filename'])}}" method="POST" style="display: inline;">
             @csrf 
             <button type="submit" class="button button-primary">Download File</button>
         </form>
+        @endif
     </div>
     
 </section>
